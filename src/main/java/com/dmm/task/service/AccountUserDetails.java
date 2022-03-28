@@ -66,5 +66,4 @@ public class AccountUserDetails implements UserDetails {
 	public String getName() {
 		return user.getName();
 	}
-
 }
