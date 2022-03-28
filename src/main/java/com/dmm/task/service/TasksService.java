@@ -43,4 +43,8 @@ public class TasksService {
 		return tasksRepository.findByDateBetweenName(from, to, name);
 	}
 
+	public List<Tasks> findAllByDate(LocalDate date) {
+		return tasksRepository.findAllByDate(date);
+	}
+
 }
