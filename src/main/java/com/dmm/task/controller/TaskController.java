@@ -64,8 +64,13 @@ public class TaskController {
 
 		Map<LocalDate, List<Tasks>> tasks = new HashMap<>();
 		LocalDate day = firstDate;
+		List<Tasks> taskList = new ArrayList<>();
 		while (day.compareTo(lastDate) <= 0) {
-			List<Tasks> taskList = tasksService.selectByDateBetweenName(day, day, user.getName());
+			if (user.getName().equals("admin-name")) {
+				taskList = tasksService.findAllByDate(day);
+			} else {
+				taskList = tasksService.selectByDateBetweenName(day, day, user.getName());
+			}
 			tasks.put(day, taskList);
 			day = day.plusDays(1);
 		}
